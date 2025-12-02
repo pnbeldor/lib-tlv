@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies (Linux only)
         if: matrix.os == 'ubuntu-latest'
-        run: sudo apt-get update && sudo apt-get install -y cmake build-essential
+        run: sudo apt-get update && sudo apt-get install -y cmake libgtest-dev build-essential
 
       - name: Setup CMake and Ninja
         uses: ashutoshvarma/setup-ninja@master # This action also installs CMake
@@ -46,7 +46,7 @@ jobs:
           echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
       - name: Configure CMake
-        run: cmake -B build -G Ninja -DBUILD_TESTING=ON
+        run: cmake -B build -G Ninja -DBUILD_TESTING=ON -DTLV_BUILD_TESTS=ON
 
       - name: Build
         run: cmake --build build --parallel 4
