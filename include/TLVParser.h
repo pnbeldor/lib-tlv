@@ -19,7 +19,7 @@ public:
         offset += 2;
         
         // Read length (2 bytes)
-        uint16_t length = (data[offset] << 8) | data[offset + 1];
+        uint16_t length = static_cast<uint16_t>((data[offset] << 8) | data[offset + 1]);
         offset += 2;
         
         // Check if we have enough data for the value

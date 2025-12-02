@@ -78,6 +78,10 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         list(APPEND COMMON_FLAGS "-Wno-c++98-compat")
         list(APPEND COMMON_FLAGS "-Wno-c++98-compat-pedantic")
         list(APPEND COMMON_FLAGS "-Wno-padded")
+
+        list(APPEND COMMON_FLAGS "-Wno-implicit-int-conversion")
+        list(APPEND COMMON_FLAGS "-Wno-sign-conversion")
+        list(APPEND COMMON_FLAGS "-Wimplicit-int-conversion")
     endif()
     
     # GCC specific warnings
@@ -96,7 +100,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     if(CMAKE_CXX_STANDARD GREATER_EQUAL 20)
         list(APPEND COMMON_CXX_FLAGS "-std=c++20")
     else()
-        list(APPEND COMMON_CXX_FLAGS "-std=c++11")
+        list(APPEND COMMON_CXX_FLAGS "-std=c++17")
     endif()
     
     # Debug flags

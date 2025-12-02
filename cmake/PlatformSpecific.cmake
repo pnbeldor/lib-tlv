@@ -53,12 +53,12 @@ elseif(TLV_BUILD_STATIC)
 endif()
 
 # Create build directory for config.h
-file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include/tlv)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include)
 
 # Configure config.h
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.h.in
-    ${CMAKE_BINARY_DIR}/include/tlv/config.h
+    ${CMAKE_BINARY_DIR}/include/onfig.h
     @ONLY
 )
 
