@@ -40,6 +40,10 @@ void TLVUtils::printTLV(const std::vector<uint8_t>& data)
                 case Type::BOOLEAN:
                     std::cout << "  Value (bool): " << (tlv->AsBoolean() ? "true" : "false") << std::endl;
                     break;
+                case Type::ARRAY:
+                [[fallthrough]]; // Explicitly mark intentional fallthrough
+                case Type::NESTED_TLV:
+                [[fallthrough]]; // Explicitly mark intentional fallthrough
                 default:
                     std::cout << "  Value (raw): ";
                     for (uint8_t byte : tlv->GetValue()) {
@@ -77,7 +81,7 @@ std::string TLVUtils::TypeToString(Type type)
 }
 
 // Helper for valueToString with AdvancedTLV
-std::string ValueToString(const AdvancedTLV& tlv) {
+std::string TLVUtils::ValueToString(const AdvancedTLV& tlv) {
     try {
         switch (tlv.GetType()) {
             case Type::INTEGER:
@@ -91,6 +95,10 @@ std::string ValueToString(const AdvancedTLV& tlv) {
                 return "\"" + tlv.AsString() + "\"";
             case Type::BOOLEAN:
                 return tlv.AsBoolean() ? "true" : "false";
+            case Type::ARRAY:
+            [[fallthrough]]; // Explicitly mark intentional fallthrough
+            case Type::NESTED_TLV:
+            [[fallthrough]]; // Explicitly mark intentional fallthrough
             default:
                 return "[raw data]";
         }

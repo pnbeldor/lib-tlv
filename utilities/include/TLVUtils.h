@@ -33,7 +33,8 @@ public:
     TLVUtils();
     virtual ~TLVUtils();
     static void printTLV(const std::vector<uint8_t>& data);
-    
+    std::string ValueToString(const AdvancedTLV& tlv);
+
     static std::vector<uint8_t> CreateMessage(const std::vector<std::unique_ptr<AdvancedTLV>>& tlvs);
     std::string TypeToString(Type type);
     std::string hexDump(const std::vector<uint8_t>& data, int indent = 0);

@@ -91,96 +91,6 @@ std::vector<uint8_t> AdvancedTLV::Serialize() const
     return result;
 }
 
-    // std::string AdvancedTLV::HEXDump(bool verbose, int indent) const
-    // {
-    //     std::ostringstream oss;
-    //     std::string indent_str(indent, ' ');
-        
-    //     oss << indent_str << "AdvancedTLV [" << TypeToString(type_) << "]" << std::endl;
-    //     oss << indent_str << "  Type: " << TypeToString(type_) << " (0x" 
-    //         << std::hex << std::setw(4) << std::setfill('0') << TypeToString(type_) << std::dec << ")" << std::endl;
-        
-    //     if (type_ == Type::ARRAY || type_ == Type::NESTED_TLV) {
-    //         oss << indent_str << "  Children: " << children_.size() << " items" << std::endl;
-    //         oss << indent_str << "  Total Size: " << CalculateTotalSize() << " bytes" << std::endl;
-            
-    //         // Dump children
-    //         for (size_t i = 0; i < children_.size(); ++i) {
-    //             oss << indent_str << "  [" << i << "]:" << std::endl;
-    //             oss << children_[i]->EXDump(verbose, indent + 4);
-    //         }
-    //     } else {
-    //         oss << indent_str << "  Length: " << value_.size() << " bytes" << std::endl;
-    //         oss << indent_str << "  Value: " << ValueToString() << std::endl;
-            
-    //         if (verbose && !value_.empty()) {
-    //             oss << indent_str << "  Hex Dump:" << std::endl;
-    //             oss << hexDump(value_, indent + 4);
-    //         }
-            
-    //         if (!value_.empty()) {
-    //             oss << indent_str << "  Raw: " << CompactHexDump(value_) << std::endl;
-    //         }
-    //     }
-        
-    //     return oss.str();
-    // }
-/*
-std::string AdvancedTLV::HEXDump(bool verbose, int indent) const
-{
-    std::ostringstream oss;
-    std::string indent_str(indent, ' ');
-    
-    // Basic TLV info
-    oss << indent_str << "TLV [" << TypeToString(type_) << "]" << std::endl;
-    oss << indent_str << "  Type: " << TypeToString(type_) << " (0x" 
-        << std::hex << std::setw(4) << std::setfill('0') << TypeToString(type_) << std::dec << ")" << std::endl;
-    oss << indent_str << "  Length: " << value_.size() << " bytes" << std::endl;
-    
-    // Value representation based on type
-    oss << indent_str << "  Value: ";
-    try {
-        switch (type_) {
-            case Type::INTEGER:
-                oss << AsInteger() << " (0x" << std::hex << AsInteger() << std::dec << ")";
-                break;
-            case Type::STRING:
-                oss << "\"" << AsString() << "\"";
-                break;
-            case Type::BOOLEAN:
-                oss << (AsBoolean() ? "true" : "false");
-                break;
-            default:
-                oss << "[raw data]";
-                break;
-        }
-    } catch (const std::exception& e) {
-        oss << "[error: " << e.what() << "]";
-    }
-    oss << std::endl;
-    
-    // Verbose hex dump
-    if (verbose && !value_.empty()) {
-        oss << indent_str << "  Hex Dump:" << std::endl;
-        oss << HEXDump(value_, indent + 4);
-    }
-    
-    // Raw bytes (compact)
-    if (!value_.empty()) {
-        oss << indent_str << "  Raw: ";
-        for (size_t i = 0; i < std::min(value_.size(), size_t(16)); ++i) {
-            oss << std::hex << std::setw(2) << std::setfill('0') 
-                << static_cast<int>(value_[i]) << " ";
-        }
-        if (value_.size() > 16) {
-            oss << "... (" << (value_.size() - 16) << " more bytes)";
-        }
-        oss << std::dec << std::endl;
-    }
-    
-    return oss.str();
-}
-*/
 std::string AdvancedTLV::TypeToString(Type type)
 {
     switch (type)
@@ -204,6 +114,10 @@ std::string AdvancedTLV::ValueToString() const
                 return "\"" + AsString() + "\"";
             case Type::BOOLEAN:
                 return AsBoolean() ? "true" : "false";
+            case Type::ARRAY:
+            [[fallthrough]]; // Explicitly mark intentional fallthrough
+            case Type::NESTED_TLV:
+            [[fallthrough]]; // Explicitly mark intentional fallthrough
             default:
                 return "[raw data]";
         }
