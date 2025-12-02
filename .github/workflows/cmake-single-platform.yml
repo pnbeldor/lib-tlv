@@ -29,6 +29,13 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: sudo apt-get update && sudo apt-get install -y cmake libgtest-dev build-essential
 
+      - name: Install dependencies (Windows only)
+        if: matrix.os == 'windows-latest'
+        #uses: ilammy/msvc-dev-cmd@v1 # Required for MSVC on Windows
+        uses: Bacondish2023/setup-googletest@v1
+        with:
+          tag: v1.17.0 # Specify the desired GoogleTest version
+
       - name: Setup CMake and Ninja
         uses: ashutoshvarma/setup-ninja@master # This action also installs CMake
         with:
