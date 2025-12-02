@@ -81,7 +81,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 
         list(APPEND COMMON_FLAGS "-Wno-implicit-int-conversion")
         list(APPEND COMMON_FLAGS "-Wno-sign-conversion")
-        list(APPEND COMMON_FLAGS "-Wimplicit-int-conversion")
+        list(APPEND COMMON_FLAGS "-Wno-covered-switch-default")
     endif()
     
     # GCC specific warnings
