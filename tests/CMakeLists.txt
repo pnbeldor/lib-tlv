@@ -1,6 +1,5 @@
 
 if(TLV_BUILD_TESTS)
-    #project(TLVTests LANGUAGES CXX)
     find_package(GTest REQUIRED)
 
     file(GLOB SOURCES CONFIG_DEPENDS "*Tests.cpp")
