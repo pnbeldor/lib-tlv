@@ -18,6 +18,15 @@ Date: 11/20/2025
 #include "TLVParser.h"
 
 // Helper functions for working with TLV
+/*
+The EXDump function provides comprehensive debugging information with features like:
+    1. Type names instead of just numbers
+    2. Multiple output formats (compact vs verbose)
+    3. Hex dumps with ASCII representation
+    4. Nested structure visualization
+    5. Error handling for malformed data
+    6. Configurable indentation for hierarchy
+*/
 class TLVUtils {
 public:
 
