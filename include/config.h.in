@@ -1,0 +1,45 @@
+#pragma once
+
+// Platform detection
+#cmakedefine TLV_PLATFORM_WINDOWS
+#cmakedefine TLV_PLATFORM_LINUX
+#cmakedefine TLV_PLATFORM_MACOS
+#cmakedefine TLV_PLATFORM_UNIX
+
+// Compiler detection
+#cmakedefine TLV_COMPILER_MSVC
+#cmakedefine TLV_COMPILER_GNU
+#cmakedefine TLV_COMPILER_CLANG
+
+// Build configuration
+#cmakedefine TLV_SHARED
+#cmakedefine TLV_STATIC
+
+// DLL export/import
+#if defined(TLV_PLATFORM_WINDOWS) && defined(TLV_SHARED)
+    #ifdef TLV_BUILD_DLL
+        #define TLV_API __declspec(dllexport)
+    #else
+        #define TLV_API __declspec(dllimport)
+    #endif
+#else
+    #define TLV_API
+#endif
+
+// Inline hint
+#if defined(TLV_COMPILER_MSVC)
+    #define TLV_FORCE_INLINE __forceinline
+#elif defined(TLV_COMPILER_GNU) || defined(TLV_COMPILER_CLANG)
+    #define TLV_FORCE_INLINE inline __attribute__((always_inline))
+#else
+    #define TLV_FORCE_INLINE inline
+#endif
+
+// Likely/unlikely hints
+#if defined(TLV_COMPILER_GNU) || defined(TLV_COMPILER_CLANG)
+    #define TLV_LIKELY(x) __builtin_expect(!!(x), 1)
+    #define TLV_UNLIKELY(x) __builtin_expect(!!(x), 0)
+#else
+    #define TLV_LIKELY(x) (x)
+    #define TLV_UNLIKELY(x) (x)
+#endif

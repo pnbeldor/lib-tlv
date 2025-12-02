@@ -1,0 +1,13 @@
+
+#cmakedefine TLV_PLATFORM_WINDOWS
+#cmakedefine TLV_PLATFORM_LINUX
+#cmakedefine TLV_PLATFORM_MACOS
+#cmakedefine TLV_PLATFORM_UNIX
+
+#cmakedefine TLV_COMPILER_MSVC
+#cmakedefine TLV_COMPILER_GNU
+#cmakedefine TLV_COMPILER_CLANG
+
+#cmakedefine TLV_SHARED
+#cmakedefine TLV_STATIC
+#cmakedefine TLV_BUILD_DLL

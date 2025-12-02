@@ -1,0 +1,20 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+# Check for C++20 support
+find_dependency(compiler_requirement
+    VERSION 7.0  # Minimum compiler versions
+    COMPONENTS cxx_std_20
+)
+
+include("${CMAKE_CURRENT_LIST_DIR}/tlv-targets.cmake")
+
+# Provide convenience variables
+set(TLV_FOUND TRUE)
+set(TLV_VERSION @TLV_VERSION@)
+set(TLV_INCLUDE_DIRS "@PACKAGE_INCLUDE_INSTALL_DIR@")
+set(TLV_LIBRARIES tlv::tlv tlv::utils)
+
+# Backward compatibility
+set(TLV_INCLUDE_DIR ${TLV_INCLUDE_DIRS})
