@@ -86,7 +86,7 @@ if(TLV_BUILD_SHARED)
     
     # Set properties
     set_target_properties(tlv_shared PROPERTIES
-        OUTPUT_NAME tlv
+        OUTPUT_NAME tlv-shared
         VERSION ${TLV_VERSION}
         SOVERSION ${TLV_VERSION_MAJOR}
         POSITION_INDEPENDENT_CODE ${TLV_ENABLE_PIC}
@@ -123,7 +123,7 @@ if(TLV_BUILD_STATIC)
     
     # Set properties
     set_target_properties(tlv_static PROPERTIES
-        OUTPUT_NAME tlv
+        OUTPUT_NAME tlv-static
         VERSION ${TLV_VERSION}
         SOVERSION ${TLV_VERSION_MAJOR}
         POSITION_INDEPENDENT_CODE ${TLV_ENABLE_PIC}
