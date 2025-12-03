@@ -6,8 +6,8 @@ if(TLV_BUILD_TESTS)
 
     add_executable(TLVTests ${SOURCES})
 
-    add_test(NAME TLV_tests COMMAND TLVTests)
     target_link_libraries(TLVTests tlv::tlv GTest::gtest GTest::gtest_main)
     include(GoogleTest)
     gtest_discover_tests(TLVTests)
+    add_test(NAME TLV_tests COMMAND TLVTests)
 endif()

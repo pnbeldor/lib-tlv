@@ -75,18 +75,14 @@ write_basic_package_version_file(
     COMPATIBILITY AnyNewerVersion
 )
 
-file(GLOB_RECURSE TLV_SOURCES CONFIGURE_DEPENDS "src/*.cpp")
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
-
-set(TLV_HEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/AdvancedTLV.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/TLV.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/TLVParser.h
-)
+file(GLOB_RECURSE TLV_SOURCES  "src/*.cpp" "src/utilities/*.cpp")
 
 # Shared library target
 if(TLV_BUILD_SHARED)
-    add_library(tlv_shared SHARED ${TLV_HEADERS} ${TLV_SOURCES})
+    add_library(tlv_shared SHARED ${TLV_SOURCES})
+
+    target_include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+    include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/utilities/include")
     
     # Set properties
     set_target_properties(tlv_shared PROPERTIES
@@ -122,6 +118,9 @@ endif()
 if(TLV_BUILD_STATIC)
     add_library(tlv_static STATIC ${TLV_SOURCES})
     
+    target_include_directories(tlv_static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+    include_directories(tlv_static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/utilities/include")
+    
     # Set properties
     set_target_properties(tlv_static PROPERTIES
         OUTPUT_NAME tlv-static
@@ -148,9 +147,6 @@ if(TLV_BUILD_STATIC)
         add_library(tlv::tlv ALIAS tlv_static)
     endif()
 endif()
-
-# Add subdirectories
-add_subdirectory(utilities)
 
 if(TLV_BUILD_EXAMPLES)
     add_subdirectory(examples)
