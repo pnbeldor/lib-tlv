@@ -65,4 +65,3 @@ jobs:
       - name: Run Tests
         run: |
           ctest --test-dir build --verbose --output-on-failure --parallel 4
-          ctest --test-dir build/utilities --verbose --output-on-failure --parallel 4
