@@ -32,10 +32,10 @@ public:
 
     TLVUtils();
     virtual ~TLVUtils();
-    static void printTLV(const std::vector<uint8_t>& data);
+    static void PrintTLV(const std::vector<uint8_t>& data);
     std::string ValueToString(const AdvancedTLV& tlv);
 
-    static std::vector<uint8_t> CreateMessage(const std::vector<std::unique_ptr<AdvancedTLV>>& tlvs);
+    std::vector<uint8_t> CreateMessage(const std::vector<std::unique_ptr<AdvancedTLV>>& tlvs);
     std::string TypeToString(Type type);
     std::string hexDump(const std::vector<uint8_t>& data, int indent = 0);
     std::string HEXDumpData(const std::vector<uint8_t>& tlv_data, bool verbose = false);

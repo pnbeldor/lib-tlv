@@ -1,7 +1,7 @@
 /* --- AdvancedTLV.cpp --- */
 
 /* ------------------------------------------
-author: Pnbeldor
+author: Pierre Nicolson Beldor
 date: 11/20/2025
 ------------------------------------------ */
 #include <iomanip>

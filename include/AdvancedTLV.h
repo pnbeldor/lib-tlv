@@ -73,7 +73,7 @@ public:
     bool AsBoolean() const;
 
     std::string HEXDump(bool verbose = false, int indent = 0) const;
-    static std::string TypeToString(Type type);
+    std::string TypeToString(Type type);
 
     size_t CalculateTotalSize() const {
         if (type_ == Type::ARRAY || type_ == Type::NESTED_TLV) {

@@ -18,7 +18,7 @@ TLVUtils::~TLVUtils() {
     // Destructor
 }
 
-void TLVUtils::printTLV(const std::vector<uint8_t>& data)
+void TLVUtils::PrintTLV(const std::vector<uint8_t>& data)
 {
     size_t offset = 0;
     int index = 0;
@@ -26,7 +26,7 @@ void TLVUtils::printTLV(const std::vector<uint8_t>& data)
     while (offset < data.size()) {
         try {
             auto tlv = TLVParser::Parse(data, offset);
-            std::cout << "TLV " << index++ << ": Type=" << AdvancedTLV::TypeToString(tlv->GetType()) 
+            std::cout << "TLV " << index++ << ": Type=" << tlv->TypeToString(tlv->GetType()) 
                         << ", Length=" << tlv->GetValue().size() << std::endl;
             
             // Print value based on type
