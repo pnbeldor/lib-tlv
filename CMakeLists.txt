@@ -61,7 +61,7 @@ option(TLV_ENABLE_SANITIZERS "Enable sanitizers (Address, Undefined)" OFF)
 # Installation options
 set(TLV_INSTALL_LIB_DIR lib CACHE STRING "Library installation directory")
 set(TLV_INSTALL_BIN_DIR bin CACHE STRING "Binary installation directory")
-set(TLV_INSTALL_INCLUDE_DIR include CACHE STRING "Header installation directory")
+set(TLV_INSTALL_INCLUDE_DIR lib/include CACHE STRING "Header installation directory")
 
 
 include(CMakePackageConfigHelpers)
@@ -82,7 +82,7 @@ if(TLV_BUILD_SHARED)
     add_library(tlv_shared SHARED ${TLV_SOURCES})
 
     target_include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-    include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/utilities/include")
+    include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/utilities/include")
     
     # Set properties
     set_target_properties(tlv_shared PROPERTIES

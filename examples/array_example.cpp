@@ -2,7 +2,7 @@
 #include "TLVUtils.h"
 
 
-void arrayExample() {
+static void arrayExample() {
     std::cout << "\n=== Array TLV Example ===" << std::endl;
     
     auto numbers = AdvancedTLV::CreateArray();

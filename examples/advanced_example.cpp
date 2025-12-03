@@ -1,7 +1,7 @@
 
 #include "TLVUtils.h"
 
-void advancedExample()
+static void advancedExample()
 {
     std::cout << "\n=== Advanced TLV Example ===" << std::endl;
     

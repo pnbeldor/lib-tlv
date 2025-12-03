@@ -4,7 +4,7 @@
 #include "TLVUtils.h"
 #include "TLVParser.h"
 
-void SimpleExamples()
+static void SimpleExamples()
 {
     TLVUtils utils;
     std::cout << "\n=== Simple Examples ===" << std::endl;

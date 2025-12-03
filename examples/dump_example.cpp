@@ -2,7 +2,7 @@
 #include "TLVUtils.h"
 #include "TLV.h"
 
-void demonstrateEXDump() {
+static void demonstrateEXDump() {
     std::cout << "=== TLV EXDump Demonstration ===" << std::endl;
 
     TLVUtils utils;
@@ -63,7 +63,7 @@ void testWithLargeData() {
 }
 */
 
-void advancedExample()
+static void advancedExample()
 {
     std::cout << "\n=== Advanced TLV Example ===" << std::endl;
 

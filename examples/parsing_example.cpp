@@ -1,7 +1,7 @@
 
 #include "TLVUtils.h"
 
-void parsingExample() {
+static void parsingExample() {
     std::cout << "\n=== Parsing Example ===" << std::endl;
     
     // Create and serialize a TLV
