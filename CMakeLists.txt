@@ -123,7 +123,9 @@ if(TLV_BUILD_STATIC)
     
     # Set properties
     set_target_properties(tlv_static PROPERTIES
-        OUTPUT_NAME tlv-static
+        OUTPUT_NAME tlv
+        VERSION ${TLV_VERSION}
+        SOVERSION ${TLV_VERSION_MAJOR}
         POSITION_INDEPENDENT_CODE ${TLV_ENABLE_PIC}
     )
     
