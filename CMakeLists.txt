@@ -99,6 +99,19 @@ if(TLV_BUILD_SHARED)
     
     # Export symbols
     if(WIN32)
+        # Library suffixes
+        set(CMAKE_SHARED_LIBRARY_SUFFIX ".dll")
+        set(CMAKE_STATIC_LIBRARY_SUFFIX ".lib")
+        set(CMAKE_IMPORT_LIBRARY_SUFFIX ".lib")
+        
+        # Clear prefixes to avoid confusion
+        if(MSVC)
+            # Don't add "lib" prefix
+            set(CMAKE_SHARED_LIBRARY_PREFIX "")
+            set(CMAKE_STATIC_LIBRARY_PREFIX "")
+            set(CMAKE_IMPORT_LIBRARY_PREFIX "")
+        endif()
+        
         target_compile_definitions(tlv_shared PRIVATE TLV_EXPORT)
     endif()
     

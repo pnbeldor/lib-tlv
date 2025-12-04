@@ -43,6 +43,14 @@ if(TLV_BUILD_EXAMPLES)
         tlv::tlv
     )
     set_target_compiler_options(tlv_example_dump)
+
+    # if(WIN32 AND TLV_BUILD_SHARED)
+    #     target_link_libraries(tlv_example_dump tlv.lib)
+    # else()
+    #     target_link_libraries(tlv_example_dum tlv_shared)
+    
+    # endif()
+    
     
     # Install examples (optional)
     if(INSTALL_EXAMPLES)
