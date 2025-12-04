@@ -82,7 +82,7 @@ if(TLV_BUILD_SHARED)
     add_library(tlv_shared SHARED ${TLV_SOURCES})
 
     target_include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-    include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/utilities/include")
+    target_include_directories(tlv_shared PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/utilities/include")
     
     # Set properties
     set_target_properties(tlv_shared PROPERTIES
@@ -119,7 +119,7 @@ if(TLV_BUILD_STATIC)
     add_library(tlv_static STATIC ${TLV_SOURCES})
     
     target_include_directories(tlv_static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-    include_directories(tlv_static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/utilities/include")
+    target_include_directories(tlv_static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/utilities/include")
     
     # Set properties
     set_target_properties(tlv_static PROPERTIES

@@ -7,12 +7,12 @@
 class AdvancedTLVTestFixture : public ::testing::Test
 {
 protected:
-    virtual void SetUp() override
+    void SetUp() override
     {
         
     }
 
-    virtual void TearDown() override
+    void TearDown() override
     {
 
     }
