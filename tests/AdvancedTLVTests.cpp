@@ -9,18 +9,23 @@ class AdvancedTLVTestFixture : public ::testing::Test
 protected:
     void SetUp() override
     {
-        
+        array = AdvancedTLV::CreateArray();
+        nested = AdvancedTLV::CreateNested();
     }
 
     void TearDown() override
     {
-
+        array.reset();
+        nested.reset();
     }
+
+    std::unique_ptr<AdvancedTLV> array;
+    std::unique_ptr<AdvancedTLV> nested;
 };
 
 TEST_F(AdvancedTLVTestFixture, NestedTLVTest)
 {
-    auto nested = AdvancedTLV::CreateNested();
+    //auto nested = AdvancedTLV::CreateNested();
     nested->AddChild(AdvancedTLV::CreateInteger(42));
     nested->AddChild(AdvancedTLV::CreateString("nested"));
     nested->AddChild(AdvancedTLV::CreateBoolean(true));
@@ -34,7 +39,7 @@ TEST_F(AdvancedTLVTestFixture, NestedTLVTest)
 
 // Test array TLV
 TEST_F(AdvancedTLVTestFixture, ArrayTLVTests) {
-    auto array = AdvancedTLV::CreateArray();
+    //auto array = AdvancedTLV::CreateArray();
     array->AddChild(AdvancedTLV::CreateInteger(1));
     array->AddChild(AdvancedTLV::CreateInteger(2));
     array->AddChild(AdvancedTLV::CreateInteger(3));

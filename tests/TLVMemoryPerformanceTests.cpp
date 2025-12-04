@@ -11,13 +11,15 @@ class TLVMemoryPerformanceTestFixture : public ::testing::Test
 protected:
     virtual void SetUp() override
     {
-        
+        tlvPtr = TLV::CreateInteger(123);
     }
 
     virtual void TearDown() override
     {
-
+        tlvPtr.reset();
     }
+
+    std::unique_ptr<TLV> tlvPtr;
 };
 
 TEST_F(TLVMemoryPerformanceTestFixture, TLVLargeDataTest)
@@ -36,7 +38,7 @@ TEST_F(TLVMemoryPerformanceTestFixture, TLVLargeDataTest)
 // Test memory management
 TEST_F(TLVMemoryPerformanceTestFixture, TLVMemoryManagementTest) {
     // Test that unique_ptr works correctly
-    auto tlvPtr = TLV::CreateInteger(123);
+    //auto tlvPtr = TLV::CreateInteger(123);
     EXPECT_EQ(tlvPtr->GetType(), Type::INTEGER);
     
     // Test moving
