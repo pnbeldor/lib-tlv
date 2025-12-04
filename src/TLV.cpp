@@ -2,6 +2,8 @@
 
 #include "TLV.h"
 
+TLV::~TLV() = default;
+
 TLV::TLV(Type type, const std::vector<uint8_t>& value)
     : type_(type), value_(value)
 {

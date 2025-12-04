@@ -18,6 +18,7 @@ enum class Type : uint16_t
 class TLV
 {
 public:
+    virtual ~TLV();
     static std::unique_ptr<TLV> CreateString(const std::string& value);
     static std::unique_ptr<TLV> CreateInteger(int32_t value);
     static std::unique_ptr<TLV> CreateBool(bool value);

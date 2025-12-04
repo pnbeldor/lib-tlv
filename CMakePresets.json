@@ -66,12 +66,36 @@
             "name": "default",
             "configurePreset": "default",
             "jobs": 8
+        },
+        {
+            "name": "clang",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "clang"
+        },
+        {
+            "name": "msvc",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "msvc"
         }
     ],
     "testPresets": [
         {
             "name": "default",
             "configurePreset": "default"
+        },
+        {
+            "name": "clang",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "clang"
+        },
+        {
+            "name": "clangTest",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "clang"
         }
     ]
 }

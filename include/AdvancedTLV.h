@@ -20,6 +20,7 @@ class AdvancedTLV {
 public:
     AdvancedTLV(Type type);
     AdvancedTLV(Type type, const std::vector<uint8_t>& value);
+    virtual ~AdvancedTLV();
     
     // Factory methods
     static std::unique_ptr<AdvancedTLV> CreateInteger(int32_t value) {

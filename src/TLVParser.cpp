@@ -5,7 +5,4 @@ TLVParser::TLVParser()
 
 }
 
-TLVParser::~TLVParser()
-{
-
-}
+TLVParser::~TLVParser() = default;
